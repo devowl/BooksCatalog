@@ -1,0 +1,7 @@
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\bin\Debug\Sms.Forms.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\bin\Debug\Sms.Forms.pdb
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.csprojResolveAssemblyReference.cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.Properties.Resources.resources
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.csproj.GenerateResource.Cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.pdb

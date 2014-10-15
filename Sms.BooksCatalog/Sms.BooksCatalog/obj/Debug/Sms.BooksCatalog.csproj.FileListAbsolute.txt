@@ -1,0 +1,17 @@
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\Sms.BooksCatalog.exe
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\Sms.BooksCatalog.pdb
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\Sms.BooksCatalog.csprojResolveAssemblyReference.cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\MainWindow.baml
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\MainWindow.g.cs
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\App.g.cs
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\Sms.BooksCatalog_MarkupCompile.cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\Sms.BooksCatalog.g.resources
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\Sms.BooksCatalog.Properties.Resources.resources
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\Sms.BooksCatalog.csproj.GenerateResource.Cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\Sms.BooksCatalog.exe
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\obj\Debug\Sms.BooksCatalog.pdb
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\Sms.BooksCatalog.exe.config
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramework.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramework.SqlServer.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramework.xml
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramework.SqlServer.xml

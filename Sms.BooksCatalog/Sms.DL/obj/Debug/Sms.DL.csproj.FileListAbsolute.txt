@@ -1,0 +1,10 @@
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\bin\Debug\Sms.DL.dll.config
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\bin\Debug\Sms.DL.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\bin\Debug\Sms.DL.pdb
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\bin\Debug\EntityFramework.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\bin\Debug\EntityFramework.xml
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\obj\Debug\Sms.DL.csprojResolveAssemblyReference.cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\obj\Debug\Sms.DL.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.DL\obj\Debug\Sms.DL.pdb
