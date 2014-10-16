@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:Sms.Forms.Converters"
+                    xmlns:helpers="clr-namespace:Sms.Forms.Helpers"
+                    xmlns:sortCol="clr-namespace:System.ComponentModel;assembly=WindowsBase"
                     >
-    <converters:PassSelectedCatalogToViewModelConverter x:Key="PassSelectedToViewConverter" />
     <converters:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
     <!--Базовый стиль для TextBlock-ов -->
     <Style x:Key="TextStyle" TargetType="{x:Type TextBlock}">
@@ -22,13 +23,7 @@
     
     <!---->
     <DataTemplate x:Key="BooksCatalogTemplate">
-        <RadioButton GroupName="BooksCatalog" x:Name="SelectableCatalog"> <!--IsChecked="{Binding Path=SelectedItem,  Mode=OneWayToSource, Converter={StaticResource PassSelectedToViewConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">-->
-            <!--<RadioButton.IsChecked>
-                <MultiBinding Converter="{StaticResource PassSelectedToViewConverter}">
-                    <Binding ElementName="SelectableCatalog" Path="DataContext"/>
-                    <Binding ElementName="SelectableCatalog" Path="IsChecked"/>
-                </MultiBinding>
-            </RadioButton.IsChecked>-->
+        <RadioButton GroupName="BooksCatalog" x:Name="SelectableCatalog"> 
             <RadioButton.Template>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <TextBlock Padding="10" FontSize="16" x:Name="tbTabName">
@@ -47,16 +42,12 @@
         </RadioButton>
     </DataTemplate>
     
-    <!--<Style TargetType="{x:Type RadioButton}" x:Key="Frame">
-        
-    </Style>-->
-    
     <!--Для отображении информации в расширенном режиме-->
     <DataTemplate x:Key="BookInfoExtended">
-        <RadioButton Padding="5" GroupName="BooksExtended" MaxWidth="500" >
+        <RadioButton Padding="5" GroupName="BooksExtended" MaxWidth="500" x:Name="rbBooksExtended" >
             <RadioButton.Template>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <Grid x:Name="rootGrid">
+                    <Grid x:Name="rootGrid" Background="{TemplateBinding Background}">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="Auto"/>
@@ -67,15 +58,13 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <!--<Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="3" Margin="3">-->
                         <Grid Grid.RowSpan="3" Margin="3">
                             <Image Width="25" Height="45" Source="{Binding BookImage, Converter={StaticResource ByteArrayToImageConverter}}" />
                         </Grid>
-                        <!--</Border>-->
                         <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Title}" Grid.Column="1" />
                         <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Author}" Grid.Column="2" />
                         <TextBlock Style="{StaticResource TextStyleDesctiption}" Text="{Binding Description}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Url}" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Url}" helpers:NavigationService.Text="{Binding Url}"  Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
@@ -97,7 +86,7 @@
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Grid x:Name="rootGrid">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
@@ -105,14 +94,12 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <!--<Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="2" Margin="3">-->
-                        <Grid Grid.RowSpan="2" Margin="3">
+                        <Grid Grid.RowSpan="2" Margin="3" VerticalAlignment="Top">
                             <Image Width="25" Height="45" Source="{Binding BookImage, Converter={StaticResource ByteArrayToImageConverter}}" />
                         </Grid>
-                        <!--</Border>-->
                         <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Title}" Grid.Column="1" />
                         <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Author}" Grid.Column="2" Grid.Row="1" />
-                        <TextBlock Style="{StaticResource TextStyle}" Text="Скачать" Grid.Row="3" HorizontalAlignment="Center" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="Скачать" Cursor="Hand" Foreground="Blue" TextDecorations="Underline" Grid.Row="3" HorizontalAlignment="Center" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
@@ -140,6 +127,12 @@
             <TextBlock Text="Витрина"  />
         </Border>
     </ControlTemplate>
+
+    <CollectionViewSource x:Key="orderByName" Source="{Binding SelectedItemCatalog.Books}">
+        <CollectionViewSource.SortDescriptions>
+            <sortCol:SortDescription PropertyName="Title" Direction="Ascending" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
     
     <!--Полная версия теплейта для листа снизу-->
     <ControlTemplate x:Key="BooksListControlTemplate">
@@ -149,10 +142,13 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Text="представление" Margin="0,0,25,0" VerticalAlignment="Center"/>
                 <RadioButton x:Name="asList" IsChecked="True" GroupName="ViewMode" Template="{StaticResource ShowList}" Background="Black"/>
                 <RadioButton x:Name="asShortList" GroupName="ViewMode" Template="{StaticResource ShowShortList}"/>
             </StackPanel>
-            <ItemsControl x:Name="ListPresenter" Grid.Row="1" Template="{StaticResource WrappingPanel}" ItemsSource="{Binding SelectedItemCatalog.Books}" />
+            <ScrollViewer Grid.Row="1">
+                <ItemsControl x:Name="ListPresenter"  Template="{StaticResource WrappingPanel}" ItemsSource="{Binding Source={StaticResource orderByName}}" />
+            </ScrollViewer>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger SourceName="asList" Property="IsChecked" Value="True">

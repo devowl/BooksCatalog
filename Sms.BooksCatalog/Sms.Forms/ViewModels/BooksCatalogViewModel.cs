@@ -57,6 +57,7 @@ namespace Sms.Forms.ViewModels
             }
             set
             {
+                if (value == null) return;
                 _selectedItemCatalog = value;
                 OnPropertyChanged("SelectedItemCatalog");
             }
