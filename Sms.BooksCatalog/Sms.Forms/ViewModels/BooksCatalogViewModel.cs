@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Sms.Forms.DataService;
+using Sms.Forms.Helpers;
 
 namespace Sms.Forms.ViewModels
 {
     /// <summary>
     /// ViewModel для каталога книг
     /// </summary>
-    public class BooksCatalogViewModel : INotifyPropertyChanged
+    public class BooksCatalogViewModel : BaseViewModel
     {
         DataServiceClient _dataClient = null;
         /// <summary>
@@ -34,17 +35,7 @@ namespace Sms.Forms.ViewModels
                 return _booksCatalog; 
             }
         }
-
-
-        /// <summary>
-        /// Открыть ссылку на сайт
-        /// </summary>
-        public ICommand OpenUrlCommand
-        {
-            get;
-            private set;
-        }
-
+        
         /// <summary>
         /// Выбранный каталог книг
         /// </summary>
@@ -62,17 +53,5 @@ namespace Sms.Forms.ViewModels
                 OnPropertyChanged("SelectedItemCatalog");
             }
         }
-
-
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string propName)
-        {
-            if(PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
-        }
-        #endregion
     }
 }

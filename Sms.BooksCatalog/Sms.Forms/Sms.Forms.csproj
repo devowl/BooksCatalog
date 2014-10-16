@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\ByteArrayToImageConverter.cs" />
+    <Compile Include="Helpers\BaseViewModel.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Views\BooksCatalog.xaml.cs">
       <DependentUpon>BooksCatalog.xaml</DependentUpon>
