@@ -1,7 +1,15 @@
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\bin\Debug\Sms.Forms.dll
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\bin\Debug\Sms.Forms.pdb
-D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.csprojResolveAssemblyReference.cache
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.Properties.Resources.resources
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.csproj.GenerateResource.Cache
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.dll
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.pdb
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\bin\Debug\Sms.Forms.dll.config
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Resources\SmsResources.baml
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms_MarkupCompile.cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.g.resources
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Views\BooksCatalog.baml
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Views\BooksCatalog.g.cs
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms.csprojResolveAssemblyReference.cache
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.Forms\obj\Debug\Sms.Forms_MarkupCompile.lref

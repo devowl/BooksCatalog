@@ -15,3 +15,5 @@ D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramewor
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramework.SqlServer.dll
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramework.xml
 D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\EntityFramework.SqlServer.xml
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\Sms.Forms.dll
+D:\Bitbucket\redberry\Sms.BooksCatalog\Sms.BooksCatalog\bin\Debug\Sms.Forms.pdb

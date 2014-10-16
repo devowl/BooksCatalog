@@ -6,7 +6,10 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using Sms.DataService.Contracts;
+using Sms.DataService.DataAccessLayer;
 using Sms.DL.Entities;
+using System.Data.Entity;
+using System.IO;
 
 namespace Sms.DataService
 {
@@ -19,12 +22,18 @@ namespace Sms.DataService
     {
         public ICollection<Book> GetBooks()
         {
-            throw new NotImplementedException();
+            using(var context = new DatabaseContext())
+            {
+                return context.Books.ToList();
+            }
         }
 
         public ICollection<Catalog> GetCatalogs()
         {
-            throw new NotImplementedException();
+            using (var context = new DatabaseContext())
+            {
+                return context.Catalogs.Include(c => c.Books).ToList();
+            }
         }
     }
 }

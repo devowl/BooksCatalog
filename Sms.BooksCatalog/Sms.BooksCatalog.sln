@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.BooksCatalog", "Sms.BooksCatalog\Sms.BooksCatalog.csproj", "{FA7977B1-1033-4EB8-ACA4-56AFBCB2A2D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Forms", "Sms.Forms\Sms.Forms.csproj", "{C5769453-96E0-4C2D-8075-B8215778496C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2B89B36-8F22-4986-B9D9-29B3BB0BCB8F} = {A2B89B36-8F22-4986-B9D9-29B3BB0BCB8F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.DataService", "Sms.DataService\Sms.DataService.csproj", "{A2B89B36-8F22-4986-B9D9-29B3BB0BCB8F}"
 EndProject

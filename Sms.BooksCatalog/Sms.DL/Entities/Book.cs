@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
@@ -52,5 +53,10 @@ namespace Sms.DL.Entities
         [DataMember]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        /// <summary>
+        /// Каталоги книги
+        /// </summary>
+        public virtual ICollection<Catalog> Catalogs { get; set; }
     }
 }

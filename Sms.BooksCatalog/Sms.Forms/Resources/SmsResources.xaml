@@ -1,0 +1,157 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:Sms.Forms.Converters"
+                    >
+    <converters:PassSelectedCatalogToViewModelConverter x:Key="PassSelectedToViewConverter" />
+    <!--Базовый стиль для TextBlock-ов -->
+    <Style x:Key="TextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+    </Style>
+    <!--Небльшая правочка к стилю TextStyle-->
+    <Style x:Key="TextStyleDesctiption" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextStyle}">
+        <Setter Property="Margin" Value="3,3,50,3" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+    </Style>
+    
+    <!--панель wrappanel которую использую вместо стандартного теплейта Айтемконтрола-->
+    <ControlTemplate x:Key="WrappingPanel">
+        <WrapPanel  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" FlowDirection="LeftToRight" IsItemsHost="true" />
+    </ControlTemplate>
+    
+    <!---->
+    <DataTemplate x:Key="BooksCatalogTemplate">
+        <RadioButton GroupName="BooksCatalog" x:Name="SelectableCatalog"> <!--IsChecked="{Binding Path=SelectedItem,  Mode=OneWayToSource, Converter={StaticResource PassSelectedToViewConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">-->
+            <RadioButton.IsChecked>
+                <MultiBinding Converter="{StaticResource PassSelectedToViewConverter}">
+                    <Binding ElementName="SelectableCatalog" Path="DataContext"/>
+                    <Binding ElementName="SelectableCatalog" Path="IsChecked"/>
+                </MultiBinding>
+            </RadioButton.IsChecked>
+            <RadioButton.Template>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <TextBlock Padding="10" FontSize="16" x:Name="tbTabName">
+                        <Run Text="{Binding Path=CatalogName, Mode=OneWay}" /> (<Run Text="{Binding Path=Books.Count, Mode=OneTime}" />)
+                    </TextBlock>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="tbTabName" Property="Background" Value="LightGreen" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="tbTabName" Property="Background" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </RadioButton.Template>
+        </RadioButton>
+    </DataTemplate>
+    
+    <!--Для отображении информации в расширенном режиме-->
+    <DataTemplate x:Key="BookInfoExtended">
+        <RadioButton Padding="5" GroupName="BooksExtended" >
+            <RadioButton.Template>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid x:Name="rootGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="3" Margin="3">
+                            <Image Width="25" Height="25" />
+                        </Border>
+                        <TextBlock Style="{StaticResource TextStyle}" Text="Информационные технологии для чайников" Grid.Column="1" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="Петров" Grid.Column="2" />
+                        <TextBlock Style="{StaticResource TextStyleDesctiption}" Text="Это не книга для просто людей а прелесть неимоверная, когда читал слюни глатал. Всем советую раз раз" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="\\testhost\test.doc" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="rootGrid" Property="Background" Value="LightGreen" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="rootGrid" Property="Background" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </RadioButton.Template>
+        </RadioButton>
+    </DataTemplate>
+    
+    <!--Для отображения информации в сжатом виде-->
+    <DataTemplate x:Key="BookInfo">
+        <RadioButton Padding="5" GroupName="Books" >
+            <RadioButton.Template>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid x:Name="rootGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="2" Margin="3">
+                            <Image Width="25" Height="25" />
+                        </Border>
+                        <TextBlock Style="{StaticResource TextStyle}" Text="Информационные технологии для чайников" Grid.Column="1" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="Петров" Grid.Column="2" Grid.Row="1" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="Скачать" Grid.Row="3" HorizontalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="rootGrid" Property="Background" Value="LightGreen" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="rootGrid" Property="Background" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </RadioButton.Template>
+        </RadioButton>
+    </DataTemplate>
+    
+    <!--Показать как лист-->
+    <ControlTemplate x:Key="ShowList" TargetType="{x:Type RadioButton}">
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5" Padding="5">
+            <TextBlock Text="Список"  />
+        </Border>
+    </ControlTemplate>
+
+    <!--Показать как сокращенный лист-->
+    <ControlTemplate x:Key="ShowShortList" TargetType="{x:Type RadioButton}">
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5" Padding="5">
+            <TextBlock Text="Витрина"  />
+        </Border>
+    </ControlTemplate>
+    
+    <!--Полная версия теплейта для листа снизу-->
+    <ControlTemplate x:Key="BooksListControlTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <RadioButton x:Name="asList" IsChecked="True" GroupName="ViewMode" Template="{StaticResource ShowList}"/>
+                <RadioButton x:Name="asShortList" GroupName="ViewMode" Template="{StaticResource ShowShortList}"/>
+            </StackPanel>
+            <ItemsControl x:Name="ListPresenter" Grid.Row="1" Template="{StaticResource WrappingPanel}" ItemsSource="{Binding BooksCatalog.Books}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger SourceName="asList" Property="IsChecked" Value="True">
+                <Setter TargetName="ListPresenter" Property="ItemTemplate" Value="{StaticResource BookInfo}" />
+            </Trigger>
+            <Trigger SourceName="asShortList" Property="IsChecked" Value="True">
+                <Setter TargetName="ListPresenter" Property="ItemTemplate" Value="{StaticResource BookInfoExtended}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

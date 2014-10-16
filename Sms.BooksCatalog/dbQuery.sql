@@ -1,0 +1,2 @@
+﻿SELECT * FROM Books
+SELECT * FROM Catalogs
