@@ -3,6 +3,7 @@
                     xmlns:converters="clr-namespace:Sms.Forms.Converters"
                     >
     <converters:PassSelectedCatalogToViewModelConverter x:Key="PassSelectedToViewConverter" />
+    <converters:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
     <!--Базовый стиль для TextBlock-ов -->
     <Style x:Key="TextStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="3" />
@@ -22,12 +23,12 @@
     <!---->
     <DataTemplate x:Key="BooksCatalogTemplate">
         <RadioButton GroupName="BooksCatalog" x:Name="SelectableCatalog"> <!--IsChecked="{Binding Path=SelectedItem,  Mode=OneWayToSource, Converter={StaticResource PassSelectedToViewConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">-->
-            <RadioButton.IsChecked>
+            <!--<RadioButton.IsChecked>
                 <MultiBinding Converter="{StaticResource PassSelectedToViewConverter}">
                     <Binding ElementName="SelectableCatalog" Path="DataContext"/>
                     <Binding ElementName="SelectableCatalog" Path="IsChecked"/>
                 </MultiBinding>
-            </RadioButton.IsChecked>
+            </RadioButton.IsChecked>-->
             <RadioButton.Template>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <TextBlock Padding="10" FontSize="16" x:Name="tbTabName">
@@ -46,9 +47,13 @@
         </RadioButton>
     </DataTemplate>
     
+    <!--<Style TargetType="{x:Type RadioButton}" x:Key="Frame">
+        
+    </Style>-->
+    
     <!--Для отображении информации в расширенном режиме-->
     <DataTemplate x:Key="BookInfoExtended">
-        <RadioButton Padding="5" GroupName="BooksExtended" >
+        <RadioButton Padding="5" GroupName="BooksExtended" MaxWidth="500" >
             <RadioButton.Template>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Grid x:Name="rootGrid">
@@ -62,13 +67,15 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="3" Margin="3">
-                            <Image Width="25" Height="25" />
-                        </Border>
-                        <TextBlock Style="{StaticResource TextStyle}" Text="Информационные технологии для чайников" Grid.Column="1" />
-                        <TextBlock Style="{StaticResource TextStyle}" Text="Петров" Grid.Column="2" />
-                        <TextBlock Style="{StaticResource TextStyleDesctiption}" Text="Это не книга для просто людей а прелесть неимоверная, когда читал слюни глатал. Всем советую раз раз" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <TextBlock Style="{StaticResource TextStyle}" Text="\\testhost\test.doc" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" />
+                        <!--<Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="3" Margin="3">-->
+                        <Grid Grid.RowSpan="3" Margin="3">
+                            <Image Width="25" Height="45" Source="{Binding BookImage, Converter={StaticResource ByteArrayToImageConverter}}" />
+                        </Grid>
+                        <!--</Border>-->
+                        <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Title}" Grid.Column="1" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Author}" Grid.Column="2" />
+                        <TextBlock Style="{StaticResource TextStyleDesctiption}" Text="{Binding Description}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Url}" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
@@ -85,7 +92,7 @@
     
     <!--Для отображения информации в сжатом виде-->
     <DataTemplate x:Key="BookInfo">
-        <RadioButton Padding="5" GroupName="Books" >
+        <RadioButton Padding="5" GroupName="Books"  >
             <RadioButton.Template>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Grid x:Name="rootGrid">
@@ -98,11 +105,13 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="2" Margin="3">
-                            <Image Width="25" Height="25" />
-                        </Border>
-                        <TextBlock Style="{StaticResource TextStyle}" Text="Информационные технологии для чайников" Grid.Column="1" />
-                        <TextBlock Style="{StaticResource TextStyle}" Text="Петров" Grid.Column="2" Grid.Row="1" />
+                        <!--<Border BorderThickness="2" BorderBrush="Black" Grid.RowSpan="2" Margin="3">-->
+                        <Grid Grid.RowSpan="2" Margin="3">
+                            <Image Width="25" Height="45" Source="{Binding BookImage, Converter={StaticResource ByteArrayToImageConverter}}" />
+                        </Grid>
+                        <!--</Border>-->
+                        <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Title}" Grid.Column="1" />
+                        <TextBlock Style="{StaticResource TextStyle}" Text="{Binding Author}" Grid.Column="2" Grid.Row="1" />
                         <TextBlock Style="{StaticResource TextStyle}" Text="Скачать" Grid.Row="3" HorizontalAlignment="Center" />
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -120,14 +129,14 @@
     
     <!--Показать как лист-->
     <ControlTemplate x:Key="ShowList" TargetType="{x:Type RadioButton}">
-        <Border BorderThickness="1" BorderBrush="Black" Margin="5" Padding="5">
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5" Padding="5" Background="{TemplateBinding Background}">
             <TextBlock Text="Список"  />
         </Border>
     </ControlTemplate>
 
     <!--Показать как сокращенный лист-->
     <ControlTemplate x:Key="ShowShortList" TargetType="{x:Type RadioButton}">
-        <Border BorderThickness="1" BorderBrush="Black" Margin="5" Padding="5">
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5" Padding="5" Background="{TemplateBinding Background}">
             <TextBlock Text="Витрина"  />
         </Border>
     </ControlTemplate>
@@ -140,17 +149,21 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <RadioButton x:Name="asList" IsChecked="True" GroupName="ViewMode" Template="{StaticResource ShowList}"/>
+                <RadioButton x:Name="asList" IsChecked="True" GroupName="ViewMode" Template="{StaticResource ShowList}" Background="Black"/>
                 <RadioButton x:Name="asShortList" GroupName="ViewMode" Template="{StaticResource ShowShortList}"/>
             </StackPanel>
-            <ItemsControl x:Name="ListPresenter" Grid.Row="1" Template="{StaticResource WrappingPanel}" ItemsSource="{Binding BooksCatalog.Books}" />
+            <ItemsControl x:Name="ListPresenter" Grid.Row="1" Template="{StaticResource WrappingPanel}" ItemsSource="{Binding SelectedItemCatalog.Books}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger SourceName="asList" Property="IsChecked" Value="True">
                 <Setter TargetName="ListPresenter" Property="ItemTemplate" Value="{StaticResource BookInfo}" />
+                <Setter TargetName="asList" Property="Background" Value="LightGray" />
+                <Setter TargetName="asShortList" Property="Background" Value="White" />
             </Trigger>
             <Trigger SourceName="asShortList" Property="IsChecked" Value="True">
                 <Setter TargetName="ListPresenter" Property="ItemTemplate" Value="{StaticResource BookInfoExtended}" />
+                <Setter TargetName="asShortList" Property="Background" Value="LightGray" />
+                <Setter TargetName="asList" Property="Background" Value="White" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

@@ -49,6 +49,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\ByteArrayToImageConverter.cs" />
     <Compile Include="Converters\PassSelectedCatalogToViewModelConverter.cs" />
     <Compile Include="Views\BooksCatalog.xaml.cs">
       <DependentUpon>BooksCatalog.xaml</DependentUpon>

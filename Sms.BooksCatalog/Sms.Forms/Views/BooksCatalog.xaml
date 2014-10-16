@@ -6,7 +6,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
+        
         <ResourceDictionary Source="..\Resources\SmsResources.xaml"/>
+        
+        
+        
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -19,7 +23,17 @@
                 <TextBlock Text="Каталог книг" HorizontalAlignment="Left" />
             </Grid>
         </Border>
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding BooksCatalog}" Template="{StaticResource WrappingPanel}" ItemTemplate="{StaticResource BooksCatalogTemplate}" />
+        <ListView ItemsSource="{Binding BooksCatalog}" SelectedItem="{Binding SelectedItemCatalog}" x:Name="CatalogList" Grid.Row="1"  Template="{StaticResource WrappingPanel}" ItemTemplate="{StaticResource BooksCatalogTemplate}" >
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="IsSelected" Value="True" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
+        </ListView>
         <Control Grid.Row="2" Template="{StaticResource BooksListControlTemplate}"/>
     </Grid>
 </UserControl>

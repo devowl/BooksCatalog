@@ -48,17 +48,17 @@ namespace Sms.Forms.ViewModels
         /// <summary>
         /// Выбранный каталог книг
         /// </summary>
-        private Catalog _selectedItem = null;
-        public Catalog SelectedItem
+        private Catalog _selectedItemCatalog = null;
+        public Catalog SelectedItemCatalog
         {
             get
             {
-                return _selectedItem;
+                return _selectedItemCatalog;
             }
             set
             {
-                _selectedItem = value;
-                OnPropertyChanged("SelectedItem");
+                _selectedItemCatalog = value;
+                OnPropertyChanged("SelectedItemCatalog");
             }
         }
 
